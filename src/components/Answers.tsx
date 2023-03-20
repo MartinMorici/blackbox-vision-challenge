@@ -57,8 +57,7 @@ const Answers = ({ type, correctAnswer, incorrectAnswers, setCurrentQuestion, se
           <div className='respuestas'>
             {respuestas.map((resp, index) => {
               return (
-                <div className={`resp ${(isCorrect || isWrong) && 'disable'}`} key={index} onClick={() => {handleAnswer(resp);}}>
-                  {resp}
+                <div className={`resp ${(isCorrect || isWrong) && 'disable'}`} key={index} onClick={() => {handleAnswer(resp);}} dangerouslySetInnerHTML={{__html: resp}}>
                 </div>
               );
             })}
@@ -79,7 +78,7 @@ const Answers = ({ type, correctAnswer, incorrectAnswers, setCurrentQuestion, se
         <div className='answer'>
           <h2 className='correct'>Correct answer!</h2>
           {currentQuestion !== 9 && (
-            <button className='btn' onClick={() => { handleNext(); }} >
+            <button className='btn' onClick={() => { handleNext()}} >
               Next Question
             </button>
           )}
@@ -91,7 +90,7 @@ const Answers = ({ type, correctAnswer, incorrectAnswers, setCurrentQuestion, se
           <h3>The right answer was:</h3>
           <h3 className='correctAnswer'>{correctAnswer}</h3>
           {currentQuestion !== 9 && (
-            <button className='btn' onClick={() => { handleNext(); }}>
+            <button className='btn' onClick={() => { handleNext()}}>
               Next Question
             </button>
           )}

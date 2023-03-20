@@ -24,6 +24,8 @@ function App() {
     const res = await fetch('https://opentdb.com/api.php?amount=10');
     const { results } = await res.json();
     setQuestions(results);
+    console.log(results);
+    
   };
   
   useEffect(() => {
@@ -51,9 +53,7 @@ function App() {
   return (
     <main className='App'>
       <section className='container'>
-        {/* Question */}
         <article className='question'>
-          {/* Question Header */}
           <header>
             <div className='question-info'>
               <span className='question-number'>
@@ -61,7 +61,7 @@ function App() {
               </span>
               <span className='question-category'>{question.category}</span>
             </div>
-            <h1 className='question-text'>{question.question}</h1>
+            <h1 className='question-text' dangerouslySetInnerHTML={{__html: question.question}}></h1>
           </header>
           
           <Answers type={question.type} correctAnswer={question.correct_answer} incorrectAnswers={question.incorrect_answers} setPoints={setPoints} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} points={points} setShowResults={setShowResults} totalPoints={totalPoints} setTotalPoints={setTotalPoints}/>
